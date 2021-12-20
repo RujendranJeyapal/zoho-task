@@ -230,12 +230,12 @@ public class Task1
     public String mergeWith(String[] inputStrings)throws Exception
    {
         
-        anotherCheck(inputStrings);
+        arrayCheck(inputStrings);
         String joinString=String.join("-",inputStrings);
         return joinString;
     
     }
-    public void anotherCheck(String[] inputStrings)throws Exception
+    public void arrayCheck(String[] inputStrings)throws Exception
     {
     for(String k:inputStrings)
     {
