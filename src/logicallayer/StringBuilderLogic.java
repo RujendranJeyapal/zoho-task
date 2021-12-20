@@ -25,7 +25,7 @@ public void numberLengthCheck(StringBuilder inputBuilder,int number)
 
 {
 nullCheckForBuilder(inputBuilder);
-if(number<=0 || number>=stringBuilderLength(inputBuilder))
+if(number<0 || number>=stringBuilderLength(inputBuilder))
 {
 throw new Exception("Invalid input");
 }
