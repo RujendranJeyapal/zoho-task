@@ -25,9 +25,9 @@ public void numberLengthCheck(StringBuilder inputBuilder,int number)
 
 {
 nullCheckForBuilder(inputBuilder);
-if(number<0 || number>=stringBuilderLength(inputBuilder))
+if(number<0 || number>=inputBuilder.length())
 {
-throw new Exception("Invalid input");
+throw new Exception("Invalid input...!");
 }
 
 }
@@ -171,6 +171,7 @@ public StringBuilder replaceCharacter(StringBuilder replaceBuilder,
                                                 throws Exception
 {
 nullCheckForBuilder(replaceBuilder);
+objectForTask1.nullEmptyCheck(replaceString);
 objectForTask1.positionCheck(startingPosition,endingPosition);
 numberLengthCheck(replaceBuilder,startingPosition);
 numberLengthCheck(replaceBuilder,endingPosition);
