@@ -200,7 +200,6 @@ case 6:
    {
    List newList6=objectForLogicLayer.createList();
    objectForLogicLayer.addObjects(newList6,arrayString6);
-   System.out.println();
    System.out.println("Index is:"+objectForLogicLayer.findIndex(newList6,inputString));
    System.out.println(newList6);
    System.out.println("Size is"+objectForLogicLayer.sizeOfList(newList6));  
