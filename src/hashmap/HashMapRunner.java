@@ -28,7 +28,7 @@ case 1:
    System.out.println(newMap1);
    System.out.println("Size:"+hashMapObj.sizeOfMap(newMap1));
    }
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -38,29 +38,12 @@ case 1:
 case 2:
    try
    {
-   Map newMap2=hashMapObj.createMap();
-   System.out.println("Howmany pairs you want..");
-   int count2=input.nextInt();
-   if(count2<0)
-   {
-   System.out.println("Your number is Negative");
-   }
-   else
-   {
-   input.nextLine();
-   for(int i=0;i<count2;i++)
-   {
-   System.out.println("Enter the Key"); 
-   String key2=input.nextLine();
-   System.out.println("Enter the value");
-   String value2=input.nextLine();
-   hashMapObj.addMap(newMap2,key2,value2);
-   }  
-   System.out.println(newMap2);
-   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap2));
+   Map newMap=createMapWithKeys();
+   System.out.println(newMap);  
+   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap));
    } 
-   }
-   catch(NullException error)
+   
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -98,7 +81,7 @@ case 3:
    System.out.println("Size:"+hashMapObj.sizeOfMap(newMap3));  
    }  
    }
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -136,7 +119,7 @@ case 4:
    System.out.println("Size:"+hashMapObj.sizeOfMap(newMap4));
    }  
    } 
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -174,7 +157,7 @@ case 5:
    System.out.println("Size:"+hashMapObj.sizeOfMap(newMap5));
    }   
    }
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -223,7 +206,7 @@ case 6:
    System.out.println("Size:"+hashMapObj.sizeOfMap(newMap6));
    }
    }   
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -273,7 +256,7 @@ case 7:
    System.out.println("Size:"+hashMapObj.sizeOfMap(newMap7));
    }   
    }
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -288,31 +271,13 @@ case 7:
 case 8:
    try
    {
-   System.out.println("Howmany pairs you want...");
-   int count8=input.nextInt();
-   if(count8<0)
-   {
-   System.out.println("Your number is Negative");
-   }
-   else
-   {
-   input.nextLine();
-   Map newMap8=hashMapObj.createMap();
-   for(int i=0;i<count8;i++)
-   {
-   System.out.println("Enter the Key");
-   String key8=input.nextLine();
-   System.out.println("Enter the Value");
-   String value8=input.nextLine();
-   hashMapObj.addMap(newMap8,key8,value8);
-   }
+   Map newMap8=createMapWithKeys();
    System.out.println(newMap8);
    System.out.println("Enter the Key to check for exists in a HashMap");
    String checkingKey=input.nextLine();
    System.out.println(hashMapObj.checkKeyExists(newMap8,checkingKey));
    }
-   }
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -327,31 +292,13 @@ case 8:
 case 9:
    try
    {
-   System.out.println("Howmany pairs you want...");
-   int count9=input.nextInt();
-   if(count9<0)
-   {
-   System.out.println("Your number is Negative");
-   }
-   else
-   {
-   input.nextLine();
-   Map newMap9=hashMapObj.createMap();
-   for(int i=0;i<count9;i++)
-   {
-   System.out.println("Enter the Key");
-   String key9=input.nextLine();
-   System.out.println("Enter the Value");
-   String value9=input.nextLine();
-   hashMapObj.addMap(newMap9,key9,value9);
-   }
+   Map newMap9=createMapWithKeys();
    System.out.println(newMap9);
    System.out.println("Enter the Value to check for exists in a HashMap");
    String checkingValue=input.nextLine();
    System.out.println(hashMapObj.checkValueExists(newMap9,checkingValue));
    }
-   }
-   catch(NullException error)
+   catch(MistakeOccuredException error)
    {
    System.out.println(error.getMessage());
    }
@@ -398,7 +345,7 @@ case 10:
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap10));
   }   
   }
-  catch(NullException error) 
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
   }
@@ -413,32 +360,15 @@ case 10:
 case 11:
   try
   {
-  System.out.println("Howmany pairs you want...");
-  int count11=input.nextInt();
-  if(count11<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap11=hashMapObj.createMap();
-  for(int i=0;i<count11;i++)
-  {
-  System.out.println("Enter the Key");
-  String key11=input.nextLine();
-  System.out.println("Enter the Value");
-  String value11=input.nextLine();
-  hashMapObj.addMap(newMap11,key11,value11); 
-  }
+  Map newMap11=createMapWithKeys();
   System.out.println(newMap11);
   System.out.println("Enter a existing key to find the value");
   String existKey=input.nextLine();
   Object getValue=hashMapObj.getValueInKey(newMap11,existKey);
   System.out.println(getValue);
   }
-  }
-  catch(NullException error) 
+  
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
   }
@@ -453,24 +383,7 @@ case 11:
 case 12:
   try
   {
-  System.out.println("Howmany pairs you want...");
-  int count12=input.nextInt();
-  if(count12<0)
-  {
-  System.out.println("Your number is Negative");
-  } 
-  else
-  {
-  input.nextLine();
-  Map newMap12=hashMapObj.createMap();
-  for(int i=0;i<count12;i++)
-  {
-  System.out.println("Enter the Key");
-  String key12=input.nextLine();
-  System.out.println("Enter the Value");
-  String value12=input.nextLine();
-  hashMapObj.addMap(newMap12,key12,value12); 
-  }
+  Map newMap12=createMapWithKeys();
   System.out.println(newMap12);
   System.out.println("Enter a non existing key");
   String nonExistKey=input.nextLine();
@@ -479,8 +392,7 @@ case 12:
   Object getValue_=hashMapObj.getValueInDefaultKey(newMap12,nonExistKey,defaultValue);
   System.out.println(getValue_);
   }
-  }
-  catch(NullException error) 
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
   }
@@ -494,24 +406,7 @@ case 12:
 case 13:
   try
   {
-  System.out.println("Howmany pairs you want...");  
-  int count13=input.nextInt();
-  if(count13<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap13=hashMapObj.createMap();
-  for(int i=0;i<count13;i++)
-  {
-  System.out.println("Enter the Key");
-  String key13=input.nextLine();
-  System.out.println("Enter the Value");
-  String value13=input.nextLine();
-  hashMapObj.addMap(newMap13,key13,value13); 
-  }
+  Map newMap13=createMapWithKeys();
   System.out.println(newMap13);
   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap13));
   System.out.println("Enter a non existing Key:");
@@ -522,8 +417,8 @@ case 13:
   System.out.println(newMap13);
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap13));
   } 
-  }
-  catch(NullException error) 
+  
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
   }
@@ -537,25 +432,8 @@ case 13:
 
 case 14:
   try
-  {
-  System.out.println("Howmany pairs you want...");
-  int count14=input.nextInt();
-  if(count14<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap14=hashMapObj.createMap();
-  for(int i=0;i<count14;i++)
-  {
-  System.out.println("Enter the Key");
-  String key14=input.nextLine();
-  System.out.println("Enter the Value");
-  String value14=input.nextLine();
-  hashMapObj.addMap(newMap14,key14,value14);
-  }
+  { 
+  Map newMap14=createMapWithKeys();
   System.out.println(newMap14);
   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap14));
   System.out.println("Enter the key value to remove");
@@ -563,13 +441,11 @@ case 14:
   hashMapObj.removeKey(newMap14,removeKey);
   System.out.println(newMap14);
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap14));
-  }
-  }
-  catch(NullException error) 
+  }  
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }   
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -580,24 +456,7 @@ case 14:
 case 15:
   try
   {
-  System.out.println("Howmany pairs you want...");
-  int count15=input.nextInt();
-  if(count15<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap15=hashMapObj.createMap();
-  for(int i=0;i<count15;i++)
-  {
-  System.out.println("Enter the Key");
-  String key15=input.nextLine();
-  System.out.println("Enter the Value");
-  String value15=input.nextLine();
-  hashMapObj.addMap(newMap15,key15,value15);
-  }
+  Map newMap15=createMapWithKeys();
   System.out.println(newMap15);
   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap15));
   System.out.println("Enter the key to remove");
@@ -607,13 +466,11 @@ case 15:
   hashMapObj.removeMatchValues(newMap15,removeKey_,removeValue);
   System.out.println(newMap15);
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap15));
-  }
-  }
-  catch(NullException error) 
+  }  
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }   
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -625,7 +482,7 @@ case 16:
   try
   {
   System.out.println("Howmany pairs you want...");
-  int count16=input.nextInt();
+  int count16=input.nextInt(); 
   if(count16<0)
   {
   System.out.println("Your number is Negative");
@@ -643,24 +500,20 @@ case 16:
   hashMapObj.addMap(newMap16,key16,value16); 
   }
   System.out.println(newMap16);
-  System.out.println("Size:"+hashMapObj.sizeOfMap(newMap16));
-  for(int i=0;i<count16;i++)
-  {
+  System.out.println("Size:"+hashMapObj.sizeOfMap(newMap16)); 
   System.out.println("Enter the Key for replace");
   String key_16=input.nextLine();
   System.out.println("Enter the replacingValue");
   String value_16=input.nextLine();
   hashMapObj.replaceValues(newMap16,key_16,value_16);
-  }
   System.out.println(newMap16); 
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap16));
   } 
   } 
-  catch(NullException error) 
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }   
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -670,25 +523,8 @@ case 16:
   
 case 17:
   try
-  {
-  System.out.println("Howmany pairs you want...");
-  int count17=input.nextInt();
-  if(count17<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap17=hashMapObj.createMap();
-  for(int i=0;i<count17;i++)
-  {
-  System.out.println("Enter the Key");
-  String key17=input.nextLine();
-  System.out.println("Enter the Value");
-  String value17=input.nextLine();
-  hashMapObj.addMap(newMap17,key17,value17); 
-  }
+  { 
+  Map newMap17=createMapWithKeys();
   System.out.println(newMap17);
   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap17));
   System.out.println("Enter the Key for replace");
@@ -697,17 +533,14 @@ case 17:
   String value_17=input.nextLine();
   System.out.println("Enter the newValue");
   String value__17=input.nextLine();
-  hashMapObj.replaceValueFromValue(newMap17,key_17,value_17,value__17);
-  
+  hashMapObj.replaceValueFromValue(newMap17,key_17,value_17,value__17);  
   System.out.println(newMap17); 
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap17));
-  }  
-  }
-  catch(NullException error) 
+  }    
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }   
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -716,58 +549,21 @@ case 17:
 
 case 18:
   try
-  {
-  System.out.println("Howmany pairs you want for first Map...");
-  int count18=input.nextInt();  
-  if(count18<0)
-  {
-  System.out.println("Your number is Negative");
-  }   
-  else
-  {
-  input.nextLine();
-  Map oneMap=hashMapObj.createMap();
-  for(int i=0;i<count18;i++)
-  {
-  System.out.println("Enter the Key");
-  String key18=input.nextLine();
-  System.out.println("Enter the Value");
-  String value18=input.nextLine();
-  hashMapObj.addMap(oneMap,key18,value18); 
-  }
+  { 
+  Map oneMap=createMapWithKeys();
   System.out.println(oneMap);
-  System.out.println("Size of first Map:"+hashMapObj.sizeOfMap(oneMap));
-  System.out.println("Howmany pairs you want for second Map...");
-  int count_18=input.nextInt();
-  if(count_18<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else 
-  {
-  input.nextLine();
-  Map anotherMap=hashMapObj.createMap();
-  for(int i=0;i<count_18;i++)
-  {
-  System.out.println("Enter the Key");
-  String key_18=input.nextLine();
-  System.out.println("Enter the Value");
-  String value_18=input.nextLine();
-  hashMapObj.addMap(anotherMap,key_18,value_18); 
-  }
+  System.out.println("Size of first Map:"+hashMapObj.sizeOfMap(oneMap)); 
+  Map anotherMap=createMapWithKeys();
   System.out.println(anotherMap);
   System.out.println("Size of first Map:"+hashMapObj.sizeOfMap(anotherMap));
   hashMapObj.addTwoMaps(anotherMap,oneMap);
   System.out.println(anotherMap);
   System.out.println("Size of new Map:"+hashMapObj.sizeOfMap(anotherMap));
-  }
-  }
-  }
-  catch(NullException error) 
+  }  
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }   
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -778,24 +574,7 @@ case 18:
 case 19:
   try
   {
-  System.out.println("Howmany pairs you want for first Map...");
-  int count19=input.nextInt();
-  if(count19<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap19=hashMapObj.createMap();
-  for(int i=0;i<count19;i++)
-  {
-  System.out.println("Enter the Key");
-  String key19=input.nextLine();
-  System.out.println("Enter the Value");
-  String value19=input.nextLine();
-  hashMapObj.addMap(newMap19,key19,value19); 
-  }
+  Map newMap19=createMapWithKeys();
   System.out.println(newMap19);
   System.out.println("After Iterate:");
   Iterator iterateMap=newMap19.entrySet().iterator();
@@ -803,13 +582,11 @@ case 19:
   {
   System.out.println(iterateMap.next());
   }
-  }
-  }
-  catch(NullException error) 
+  }  
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }  
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -820,36 +597,17 @@ case 19:
 case 20:
   try
   {
-  System.out.println("Howmany pairs you want...");
-  int count20=input.nextInt();
-  if(count20<0)
-  {
-  System.out.println("Your number is Negative");
-  }
-  else
-  {
-  input.nextLine();
-  Map newMap20=hashMapObj.createMap();
-  for(int i=0;i<count20;i++)
-  {
-  System.out.println("Enter the Key");
-  String key20=input.nextLine();
-  System.out.println("Enter the Value");
-  String value20=input.nextLine();
-  hashMapObj.addMap(newMap20,key20,value20); 
-  }
+  Map newMap20=createMapWithKeys();
   System.out.println(newMap20);
   System.out.println("Size:"+hashMapObj.sizeOfMap(newMap20));
   hashMapObj.clearMap(newMap20); 
   System.out.println(newMap20);
   System.out.println("After Size:"+hashMapObj.sizeOfMap(newMap20));
   }
-  }
-  catch(NullException error) 
+  catch(MistakeOccuredException error) 
   {
   System.out.println(error.getMessage());
-  }
-   
+  }   
   catch(Exception ex)
   {
   System.out.println("Please enter a Number.");
@@ -859,6 +617,34 @@ case 20:
 
 default:
   System.out.println("Invalid Input...!");  
+}
+}
+
+private static Map createMapWithKeys()throws Exception
+{
+
+   HashMapLogic hashMapObj=new HashMapLogic();
+   Map newMap=hashMapObj.createMap();
+   Scanner input=new Scanner(System.in);
+   System.out.println("Howmany pairs you want..");
+   int count=Integer.parseInt(input.nextLine()); 
+   negativeCheck(count);
+   for(int i=0;i<count;i++)
+   {
+   System.out.println("Enter the Key"); 
+   String key=input.nextLine();
+   System.out.println("Enter the value");
+   String value=input.nextLine();
+   hashMapObj.addMap(newMap,key,value);
+   } 
+   return newMap;
+}
+
+private static void negativeCheck(int count)throws MistakeOccuredException
+{
+if(count<0)
+{
+throw new MistakeOccuredException("Your number is negative");
 }
 }
 }
