@@ -2,14 +2,15 @@ package utility;
 
 public class CustomException extends Exception
 {
+	
 public CustomException(String message)
 {
-super(message);	
+	super(message);
 }
 
-public CustomException(Exception ex)
+public CustomException(Exception exception)
 {
-super(ex);	
+	super(exception);
 }
 	
 }
