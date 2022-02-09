@@ -33,6 +33,8 @@ public Map addAccInfo(AccountInfo accountInfo)throws CustomException
 	Utility.objectCheck(accountInfo,"AccountInfo");
 	int cusId=accountInfo.getCustomerId();
 	cusIdCheck(cusId);
+	CustomerInfo cusDetails=cusDetailsMap.get(cusId);
+	activationCheck(cusDetails);
 	int accId=accountInfo.getAccountId();
 	Map<Integer, AccountInfo> accDetails=accDetailsMap.get(cusId);
 	
@@ -155,9 +157,17 @@ public void activationCheck(AccountInfo accDetails)throws CustomException
 {
 	if(accDetails.getStatus()==false)
 	{
-		throw new CustomException("Your account is activate");
+		throw new CustomException("Your account is InActivate");
 	}
 	
 }
 
+public void activationCheck(CustomerInfo cusDetails)throws CustomException
+{
+	if(cusDetails.getStatus()==false)
+	{
+		throw new CustomException("Customer ID is InActivate");
+	}
+	
+}
 }
