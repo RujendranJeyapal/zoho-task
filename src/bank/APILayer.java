@@ -53,8 +53,9 @@ public Map addAccInfo(AccountInfo accountInfo)throws CustomException
 }
 
 
-public CustomerInfo getCusInfo(int cusId)
+public CustomerInfo getCusInfo(int cusId)throws CustomException
 {
+	cusIdCheck(cusId);
 	return  cusDetailsMap.get(cusId);
 	
 }
@@ -63,12 +64,14 @@ public AccountInfo getAccInfo(int cusId,int AccId)throws CustomException
 {
 	cusIdCheck(cusId);
 	Map accountDetails=accDetailsMap.get(cusId);
+	Utility.objectCheck(accountDetails, "Account Is not Avilable ");
     return (AccountInfo) accountDetails.get(AccId);	
 }
 
 public void depositAmount(int cusId,int accId,int amount)throws CustomException
 {
 	AccountInfo accDetails=getAccInfo(cusId,accId);
+	Utility.objectCheck(accDetails,"AccountInfo");
 	activationCheck(accDetails);
 	double balance=accDetails.getAvailableBalance();
 	accDetails.setAvailableBalance(balance+amount);	
@@ -78,6 +81,7 @@ public void depositAmount(int cusId,int accId,int amount)throws CustomException
 public void withDrawAmount(int cusId,int accId,int amount)throws CustomException
 {
 	AccountInfo accDetails=getAccInfo(cusId,accId);
+	Utility.objectCheck(accDetails,"AccountInfo");
 	activationCheck(accDetails);	
 	double balance=accDetails.getAvailableBalance();
 	if(balance<amount)
@@ -113,6 +117,7 @@ public void setCustomerStatus(int cusId,int status)throws CustomException
 public void setAccountStatus(int cusId,int accId,int status)throws CustomException
 {
 	AccountInfo accDetails=getAccInfo(cusId,accId);
+	Utility.objectCheck(accDetails,"AccountInfo");
 	if(status==0)
 	{
 	accDetails.setStatus(false);
@@ -152,6 +157,8 @@ public void cusIdCheck(int cusId)throws CustomException
 	throw new CustomException("Doesn't exist");
 	}
 }
+
+
 	
 public void activationCheck(AccountInfo accDetails)throws CustomException
 {

@@ -248,6 +248,10 @@ public class BankRunner
 	    		System.out.println(ex);
 	    		input.nextLine();
 	    	}
+	    	catch (CustomException ex) 
+	    	{
+				System.out.println(ex.getMessage());
+	    	}
 	    	break;
 	    	 	    
 	    
