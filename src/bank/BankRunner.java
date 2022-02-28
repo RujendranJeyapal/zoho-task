@@ -1,21 +1,22 @@
 package bank;
 import utility.*;
-import java.util.HashMap;
+import customers.*;
+import accounts.*;
 import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
+import banklogic.*;
+
 
 public class BankRunner 
 {
+	
+
 	Scanner input=new Scanner(System.in);
-	APILayer callAPI=new APILayer();
 	
-	Map newMap=new HashMap();
-	
-	Map newMap1=new HashMap();
-	void addCusDetails()
+
+private	void addCusDetails(boolean condition)
 	{
+	APILayer callAPI=new APILayer(condition);
 		try
 		{
 		System.out.println("Howmany customers you add");
@@ -31,13 +32,10 @@ public class BankRunner
 			System.out.println("Enter Customer Mobile Number");
 			long mobileNo=input.nextLong();
 			input.nextLine();
-			int customerId=callAPI.generateCusID();
-			cusDetails.setCustomerId(customerId);
 			cusDetails.setName(name);
 			cusDetails.setAddress(address);
 			cusDetails.setMobileNo(mobileNo);
-			
-			newMap=callAPI.addCusInfo(cusDetails);
+			callAPI.addCusInfo(cusDetails);
 		}
 		}
 		catch(CustomException ex)
@@ -46,21 +44,20 @@ public class BankRunner
 		}
 		catch(Exception ex)
 		{
-		   System.out.println("Enter number only");	
+		   System.out.println(ex);
+		   ex.printStackTrace();
 		}
 	}
 	
 	
-	void printCusDetails()
+
+	
+	
+	
+	
+	void addAccDetails(boolean condition)
 	{
-		System.out.println(newMap);
-	}
-	
-	
-	
-	
-	void addAccDetails()
-	{
+		APILayer callAPI=new APILayer(condition);
 	try
 	{
 	System.out.println("Howmany Accounts you add");
@@ -72,19 +69,12 @@ public class BankRunner
 		AccountInfo accDetails=new AccountInfo();
 		System.out.println("Enter the Customer ID");
 		int customerId=input.nextInt();
-		input.nextLine();
-		int accountId=callAPI.generateAccID();
+		input.nextLine();	
 		System.out.println("Set Branch Name");
 		String branch=input.nextLine();
-		System.out.println("Set Account Number");
-		long accountNo=input.nextLong();
-		input.nextLine();
 		accDetails.setCustomerId(customerId);
-		accDetails.setAccountId(accountId);
 		accDetails.setBranch(branch);
-		accDetails.setAccountNo(accountNo);
-
-		newMap1=callAPI.addAccInfo(accDetails);
+		callAPI.addAccInfo(accDetails);
 	}	
 	}
 	catch(CustomException ex)
@@ -99,27 +89,39 @@ public class BankRunner
 	}
 	
 	
-	void printAccDetails()
-	{
-		System.out.println(newMap1);
-	}
 	
 	
 	
 	
 
-	public static void main(String[] args)
+public static void main(String[] args)
 	{
 		Scanner input=new Scanner(System.in);
-		APILayer callAPI=new APILayer();
-		BankRunner objForRunner=new BankRunner();
+		boolean condition1=false;;
+		System.out.println("Say true or false..\n true-->  to store file \n false-->to store database");
+		try
+		{
+		 condition1=input.nextBoolean();
+		}
+		catch(Exception ex)
+		{
+			System.out.println("true or false only");
+		}
+	    APILayer callAPI=new APILayer(condition1);
+	    BankRunner objForRunner=new BankRunner();
 		int caseNo = 0;
 		boolean condition=true;
 		  while(condition)
 		    {
 		System.out.println("Enter the Number");
-		System.out.println("1. Add Customer Details \n2. Add Account Details \n3. Set Customer ID status \n4. Set Account ID status \n5. Deposit Amount \n6. Withdraw Amount \n7. Get Customer "
-				+ "Detail \n8. Get Account Detail \n9. Show Customers Details \n10. Show Accounts Details");
+		System.out.println("1. Read Customer Details \n2. Read "
+				+ "Account Details \n3. Add Customer Details "
+				+ "\n4. Add Account Details  \n5. Set Customer ID status \n6. Set Account ID "
+				+ "status \n7. Deposit Amount \n8. Withdraw Amount \n9. Get Customer "
+				+ "Detail From Cache \n10. Get Account Detail From Cache \n11. Get Customer "
+				+ "Detail From File \n12. Get Account"
+				+ " Detail From File \n13. Show Customer Details From Cache "
+				+ "Memory \n14. Show Account Details From Cache Memory ");
 				
 		try
 		{
@@ -138,15 +140,40 @@ public class BankRunner
 	    
 	    
 	    case 1:
-	    	objForRunner.addCusDetails();
+	    	try 
+	    	{
+	   		callAPI.readCusDetails();
+			} 
+	    	catch (CustomException ex) 
+	    	{
+				System.out.println(ex);
+			}
 	    	break;
-	    	 
+	    	
+	  	 
 	    case 2:
+	    	try
+	    	{
+	    		callAPI.readAccDetails();
+	    	}
+	    	catch (CustomException ex) 
+	    	{
+				System.out.println(ex);
+			}
+	    	break;
 
-	        objForRunner.addAccDetails();
-	        break;
-	    
+	    	
 	    case 3:
+	    	objForRunner.addCusDetails(condition1);
+	    	break;
+	    	
+	    	
+	    case 4:
+	    	objForRunner.addAccDetails(condition1);
+	    	break;
+	    	
+	    	
+	    case 5:
 	    	try
 	    	{
 	    	System.out.println("Enter the Customer ID");
@@ -154,6 +181,7 @@ public class BankRunner
 	    	System.out.println("Press 0-->Inactivate and Press 1-->Activate ");
 	    	int status=input.nextInt();
 	    	callAPI.setCustomerStatus(cusId3, status);
+	
 	    	}
 	    	catch(InputMismatchException ex)
 	    	{
@@ -167,7 +195,7 @@ public class BankRunner
 	    	
 	    	break;
 	    	
-	    case 4:
+	    case 6:
 	    	try
 	    	{
 	    	System.out.println("Enter the Customer ID");
@@ -177,6 +205,7 @@ public class BankRunner
 	    	System.out.println("Press 0-->Inactivate and Press 1-->Activate");
 	    	int status1=input.nextInt();
 	    	callAPI.setAccountStatus(cusId4, accId4, status1);
+	    	
 	    	}
 	    	catch(InputMismatchException ex)
 	    	{
@@ -187,10 +216,11 @@ public class BankRunner
 	    	catch (CustomException ex) 
 	    	{
 				System.out.println(ex.getMessage());
-	    	}
-	    	
+	    	}	
 	    	break;
-	    case 5:
+	    	
+	    	
+	    case 7:
 	    	try
 	    	{
 	    	System.out.println("Enter the Customer ID");
@@ -200,6 +230,7 @@ public class BankRunner
 	    	System.out.println("Howmuch Amount to you deposit");
 	    	int amount=input.nextInt();
 	    	callAPI.depositAmount(cusId5, accId5, amount);
+
 	    	}
 	    	catch(InputMismatchException ex)
 	    	{
@@ -213,7 +244,7 @@ public class BankRunner
 	    	}
 	    	break;
 	    	
-	    case 6:
+	    case 8:
 	    	try
 	    	{
 	    	System.out.println("Enter the Customer ID");
@@ -223,6 +254,7 @@ public class BankRunner
 	    	System.out.println("Howmuch Amount to you WithDraw");
 	    	int amount=input.nextInt();
 	    	callAPI.withDrawAmount(cusId6, accId6, amount);
+	    	
 	    	}
 	    	catch(InputMismatchException ex)
 	    	{
@@ -235,13 +267,13 @@ public class BankRunner
 				System.out.println(ex.getMessage());
 	    	}
 	    	break;
-	    	
-	    case 7:
+	  	
+	    case 9:
 	    	try
 	    	{
 	    	System.out.println("Enter the Customer ID");
 	    	int cusId=input.nextInt();
-	    	System.out.println(callAPI.getCusInfo(cusId));
+	    	System.out.println(callAPI.getCusInfoFromCache(cusId));
 	    	}
 	    	catch(InputMismatchException ex)
 	    	{
@@ -254,15 +286,15 @@ public class BankRunner
 	    	}
 	    	break;
 	    	 	    
-	    
-	    case 8:
+	   
+	    case 10:
 	    	try
 	    	{
 	    	System.out.println("Enter the Customer ID");
 	    	int cusId8=input.nextInt();
 	    	System.out.println("Enter the Account ID");
 	    	int accId8=input.nextInt();
-	    	System.out.println(callAPI.getAccInfo(cusId8, accId8));
+	    	System.out.println(callAPI.getAccInfoFromCache(cusId8, accId8));
 	    	}
 	    	catch(InputMismatchException ex)
 	    	{
@@ -275,16 +307,76 @@ public class BankRunner
 				System.out.println(ex.getMessage());
 	    	}
 	    	break;
+	 
+	    case 11:
+	    	try
+	    	{
+	    	System.out.println("Enter the Customer ID");
+	    	int cusId=input.nextInt();
+	    	System.out.println(callAPI.getCusInfoFromMemory(cusId));
+	    	}
+	    	catch(InputMismatchException ex)
+	    	{
+	    		System.out.println(ex);
+	    		input.nextLine();
+	    	}
+	    	catch (CustomException ex) 
+	    	{
+				System.out.println(ex.getMessage());
+	    	}
+	    	break;
+
+	   case 12:
+	    	try
+	    	{
+	    	System.out.println("Enter the Customer ID");
+	    	int cusId8=input.nextInt();
+	    	System.out.println("Enter the Account ID");
+	    	int accId8=input.nextInt();
+	    	System.out.println(callAPI.getAccInfoFromMemory(cusId8, accId8));
+	    	}
+	    	catch(InputMismatchException ex)
+	    	{
+	    		System.out.println(ex);
+	    		
+	    		input.nextLine();
+	    	} 
+	    	catch (CustomException ex) 
+	    	{
+				System.out.println(ex.getMessage());
+	    	}
+	    	break;	
 	    	
-	    case 9:
-	    	objForRunner.printCusDetails();
+	    case 13:
+	    	System.out.println(callAPI.showCusDetailsFromCache());
 	    	break;
 	    
-	    case 10:
-	    	objForRunner.printAccDetails();
+	    case 14:
+	    	System.out.println(callAPI.showAccDetailsFromCache());
+	    	break;
+	    
+	/*    case 15:
+	    	try
+	    	{
+				callAPI.createCusTable();
+			}
+	    	catch (CustomException ex)
+	    	{
+				System.out.println(ex);
+			}
 	    	break;
 	    	
-	    	
+	    case 16:
+	    	try
+	    	{
+				callAPI.createAccTable();
+			}
+	    	catch (CustomException ex)
+	    	{
+				System.out.println(ex);
+			}
+	    	break;	
+	  */  	
 	    default:
 	    	System.out.println("Invalid input");
 	    	condition=false;
