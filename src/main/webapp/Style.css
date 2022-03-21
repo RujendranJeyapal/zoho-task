@@ -1,0 +1,39 @@
+@charset "UTF-8";
+table[id="1"],th[id="1"],td[id="1"]
+{
+	border-collapse:collapse;
+	border:1px solid black;
+	text-align:center;
+}
+img #1
+{
+	width:180px;
+	height:200px;
+	margin-left:560px;
+	margin-top:-180px;
+}
+img[id="2"]
+{
+	width:50px;
+	height:50px;
+	margin-left:700px;
+}
+body
+{
+	border:1px solid black;
+	padding:50px;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+div
+{
+	width:200px;
+	height:200px;
+	margin-left:650px;
+}
+h3
+{
+	color:grey;
+}
