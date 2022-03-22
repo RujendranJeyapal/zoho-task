@@ -25,16 +25,18 @@
  
  
  function giveOperators(oper)
- {
-	    
-  
-      
+ {	   
+
+	
+	if(actualNumber!='-' && secondNumber!='-')
+	{
+	
       if((actualNumber!='' || actualNumber==0) && secondNumber!='')
       {
 	     actualNumber= operation(actualNumber,secondNumber,operator); 
 	    
 	     document.getElementById(operator).style.backgroundColor='';
-	      document.getElementById(oper).style.backgroundColor='green';
+	     document.getElementById(oper).style.backgroundColor='green';
 	     operator=oper;
 	     secondNumber='';
 	     document.getElementById("disp").value='';
@@ -43,7 +45,7 @@
       
        
 
-      else if(actualNumber=='' || (actualNumber!='' && operator!=''))
+      else if((actualNumber=='' && actualNumber!=0) || ((actualNumber!='' || actualNumber==0) && operator!=''))
       {
 	        if(oper=='-')
 	        {
@@ -51,7 +53,17 @@
 	        }
 	        else
 	        {
-		          document.getElementById("disp").value='';
+                   if(operator!='')
+                   {		
+		           document.getElementById(operator).style.backgroundColor='';
+	               document.getElementById(oper).style.backgroundColor='green';
+		           operator=oper;
+		           }
+		           else
+		           {
+			         document.getElementById("disp").value='';
+		           }
+		          
 	        }
       }	 
       
@@ -62,9 +74,9 @@
 	         document.getElementById("disp").value='';
 
       }
-     
-	  
- }
+     }
+ }  
+ 
  
  function equalFunction()
  {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MEDIUM LEVEL CALCULATOR</title>
+<link rel="stylesheet" type="text/css" href="CalciStyle.css">
+<script src="Calculator.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+        <div class="display">
+         
+                 <input type="text" readonly="readonly" id="disp">
+        </div>
+        
+
+        <div>
+                <button id="button1" onclick="showDisplay(1)" >1</button>
+                <button id="button2" onclick="showDisplay(2)" >2</button>
+                <button id="button3" onclick="showDisplay(3)" >3</button>
+                <button id="+" onclick="giveOperators('+')">+</button><br>
+       </div>
+        
+       <div>
+                <button id="button4" onclick="showDisplay(4)" >4</button>
+                <button id="button5" onclick="showDisplay(5)" >5</button>
+                <button id="button6" onclick="showDisplay(6)" >6</button>
+                <button id="-" onclick="giveOperators('-')" >-</button><br>
+       </div>
+       
+       <div>
+                <button id="button7" onclick="showDisplay(7)" >7</button>
+                <button id="button8" onclick="showDisplay(8)" >8</button>
+                <button id="button9" onclick="showDisplay(9)" >9</button>
+                <button id="*" onclick="giveOperators('*')" >*</button><br>
+       </div>
+       
+       <div>
+                <button id="dot" onclick="showDisplay('.')">.</button>
+                <button id="button0" onclick="showDisplay(0)" >0</button>
+                <button  onclick="empty('')">C</button>
+                <button id="/" onclick="giveOperators('/')">/</button>
+
+       </div>
+       
+       <div class="equal">
+        
+                <button id="equal" onclick="equalFunction()">=</button>
+        
+       </div>
+</div>
+</body>
+</html>

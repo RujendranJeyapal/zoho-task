@@ -3,7 +3,7 @@
 button
 {
 	width:85px;
-	background-color:gsk;
+	background-color:white;
   line-height:30px;
 font-weight:bolder;
   color:black;
@@ -14,20 +14,20 @@ font-weight:bolder;
 button:hover
 {
 	  cursor:pointer;
-	  background-color:violet;
+	  background-color:silver;
 }
 
 
 body
 {
-	background-color:pink;
+	background-color:papayaWhip;
 
 	
 }
 .container 
 {
 	width:400px;
-    height:380px;
+    height:370px;
 	border:1px solid black;
 	text-align:center;
 	
@@ -37,7 +37,7 @@ body
     padding-top:30px;
 
 	box-shadow:1px 4px 4px 1px;
-	background-color:grey;	
+	background-color:honeydew;	
 }
 
 input[type=text]
@@ -46,7 +46,7 @@ input[type=text]
 	width:350px ;
     height:50px;
     border:1px solid black;
-
+    padding-right:3px;
 	color:white;
 	font-size:20px;
 	text-align:right;
