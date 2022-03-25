@@ -9,19 +9,36 @@
  
  function showDisplay(numbers)
  {	  
-		
-	document.getElementById("disp").value+=numbers;
+ 
+     	
+ 
+ 	
 
-	if((actualNumber!='' || actualNumber==0) && operator!='')
+	if((actualNumber!='' || actualNumber===0) && operator!='')
 	{
+		if(secondNumber.includes('.') && numbers=='.')
+		{
+			numbers='';
+		}
+		
 		secondNumber+=numbers;
+		
+		document.getElementById("disp").value=secondNumber;
+		
 	}
 	else
 	{
+		if(actualNumber.includes('.') && numbers=='.')
+		{
+			numbers='';
+		}
+	
 		actualNumber+=numbers;
+		
+		document.getElementById("disp").value=actualNumber;
 	}
-	 
- }
+   } 
+
  
  
  function giveOperators(oper)
@@ -31,7 +48,7 @@
 	if(actualNumber!='-' && secondNumber!='-')
 	{
 	
-      if((actualNumber!='' || actualNumber==0) && secondNumber!='')
+      if((actualNumber!='' || actualNumber===0) && secondNumber!='')
       {
 	     actualNumber= operation(actualNumber,secondNumber,operator); 
 	    
@@ -45,7 +62,17 @@
       
        
 
-      else if((actualNumber=='' && actualNumber!=0) || ((actualNumber!='' || actualNumber==0) && operator!=''))
+      
+      else if((actualNumber!=''|| actualNumber===0) && operator=='' && secondNumber=='')
+      {   	        
+	         document.getElementById(oper).style.backgroundColor='green';
+	         operator=oper;
+	         document.getElementById("disp").value='';
+
+      }
+      
+      
+      else 
       {
 	        if(oper=='-')
 	        {
@@ -67,13 +94,6 @@
 	        }
       }	 
       
-      else
-      {   	        
-	         document.getElementById(oper).style.backgroundColor='green';
-	         operator=oper;
-	         document.getElementById("disp").value='';
-
-      }
      }
  }  
  
