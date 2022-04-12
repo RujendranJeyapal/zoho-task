@@ -1,5 +1,6 @@
 package zoho;
 import task.Task1;
+import task4.*:
 import java.util.Scanner;
 
 public class Main {
@@ -20,30 +21,28 @@ public class Main {
         int number = 0;
 
 
-        try 
-        {
-            number = input.nextInt();
-             input.nextLine();
-        }
-         catch (Exception value
-         ) {
-            System.out.println("");
-        }
+                try 
+                {
+                number = input.nextInt();
+                input.nextLine();
+                }
+                catch (Exception value)
+                {
+                System.out.println("");
+                }
        
 
 
 
-            switch (number) {
-                case 1:
-                    String arrayString;
-                    
-                    
-                    try
+        switch (number) 
+        {
+        
+               case 1:
                     {
-                       arrayString =args[0];
-                       System.out.println(taskObject.getLength(arrayString));
+                      String inputString1=args[0];
+                       System.out.println(taskObject.getLength(inputString1));
                     }
-                    catch(Exception ex)
+                    catch(MistakeOccuredException ex)
                     {
                     System.out.println(ex.getMessage());
                     }
@@ -61,7 +60,7 @@ public class Main {
                     System.out.println(outputChar);
                     
                     }       
-                    catch(Exception ex)
+                    catch(MistakeOccuredException ex)
                     {
                     System.out.println(ex.getMessage());
                     }
@@ -72,25 +71,25 @@ public class Main {
                     System.out.println("Enter a string");
                     String name3=input.nextLine();
                     System.out.println("Enter the Position");
-                    int position=0;
+                    
                     
                     try
                     {
                     
-                     position=input.nextInt();
+                    int position=input.nextInt();
                     
                     
                     
-                    try 
-                    {                          
+                   
+                                              
                          System.out.println(taskObject.letterOfPosition(name3,position-1));  
-                    }      
-                    catch (Exception empty)
+                       
+                    catch (MistakeOccuredException empty)
                     {
                         System.out.println(empty.getMessage());
-                     }
-                     }
-                     catch(Exception ex)
+                    }
+                     
+                    catch(Exception ex)
                     {
                     System.out.println("Please enter a number");
                     }
@@ -112,7 +111,7 @@ public class Main {
 
                     System.out.println(taskObject.occurrencesOfLetter(name4, letter));
                     }
-                    catch(Exception error)
+                    catch(MistakeOccuredException error)
                     {
                     System.out.println(error.getMessage());
                     }
@@ -133,7 +132,7 @@ public class Main {
                       System.out.println(taskObject.greatestPosition(name5, letter1));
                     }
                
-                      catch(Exception error)
+                      catch(MistakeOccuredException error)
                     {
                                         System.out.println(error.getMessage());
                 
@@ -151,20 +150,14 @@ public class Main {
                     System.out.println("Enter the starting Position");
                     int startPosition=input.nextInt();
                     System.out.println("Enter the ending Position");
-                    int endPosition=input.nextInt();
-                    
-                   
-                    
-                    try
-                     {
-                       
-                     System.out.println(taskObject.printLetters(name6,startPosition-1,endPosition));
-                    } 
-                    catch (Exception empty)
-                     {
+                    int endPosition=input.nextInt();         
+                    System.out.println(taskObject.printLetters(name6,startPosition-1,endPosition));
+                     
+                    catch (MistakeOccuredException empty)
+                    {
                         System.out.println(empty.getMessage());
                     }
-                    }
+                    
                      catch(Exception ex)
                     {
                     System.out.println("Please enter a number");
@@ -178,21 +171,18 @@ public class Main {
                     String name7 =input.nextLine();
                     try
                     {
-                     System.out.println("Enter the starting Position");
+                    System.out.println("Enter the starting Position");
                     int startPosition=input.nextInt();
                     System.out.println("Enter the ending Position");
-                    int endPosition=input.nextInt();
+                    int endPosition=input.nextInt();    
+                    System.out.println(taskObject.printLetters(name7,startPosition,endPosition));
+                    }
+                    catch (MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    }
                     
-                    try
-                     {
-                   
-                        System.out.println(taskObject.printingLetters(name7,startPosition,endPosition));
-                    } 
-                    catch (Exception empty) {
-                        System.out.println(empty.getMessage());
-                    }
-                    }
-                     catch(Exception ex)
+                    catch(Exception ex)
                     {
                     System.out.println("Please enter a number");
                     }
@@ -205,28 +195,28 @@ public class Main {
                     String name8 = input.nextLine();
                     System.out.println("Enter Replace letters");
                     String name_8=input.nextLine();
-                    int firstPositionToReplace=0;
-                    int lastPositionToReplace=0;
+       
                     
                     try
                     {
                     System.out.println("Enter the starting Position");
-                     firstPositionToReplace=input.nextInt();
+                    int firstPositionToReplace=input.nextInt();
                     System.out.println("Enter the ending Position");
-                     lastPositionToReplace=input.nextInt();
+                    int lastPositionToReplace=input.nextInt();
                     
                     
-                    try {
+                 
                     
-                        System.out.println(taskObject.replaceWithAnotherLetter(name8,name_8,firstPositionToReplace-1,lastPositionToReplace));
-                    } 
-                    catch (Exception empty) {
+                    System.out.println(taskObject.replaceWithAnotherLetter(name8,name_8,firstPositionToReplace-1,lastPositionToReplace));
+                    
+                    catch (MistakeOccuredException empty) 
+                    {
                         System.out.println(empty.getMessage());
                     }
-                    }
+                    
                      catch(Exception ex)
                     {
-                    System.out.println("Please enter a number");
+                        System.out.println("Please enter a number");
                     }
                     
                     break;
@@ -238,16 +228,16 @@ public class Main {
                     System.out.println("Enter a letter to check for start");
                     String name_9=input.nextLine();
          
-                 try
+                     try
                      {
                         
                         System.out.println(taskObject.startingCheck(name9,name_9));
-                      }
+                     }
            
-                 catch(Exception empty)
-                    {
-                      System.out.println(empty.getMessage());  
-                    }
+                     catch(MistakeOccuredException empty)
+                     {
+                        System.out.println(empty.getMessage());  
+                     }
                     break;
                     
                 case 10:
@@ -263,7 +253,7 @@ public class Main {
                       System.out.println(taskObject.endingCheck(name10,name_10));
                     
                     }
-                    catch(Exception empty)
+                    catch(MistakeOccuredException empty)
                     {
                        System.out.println(empty.getMessage());
                     }
@@ -273,11 +263,11 @@ public class Main {
                 case 11:
                     System.out.println("Enter a string");
                     String name11 = input.nextLine();
-                   try
-                   {
+                    try
+                    {
                     System.out.println(taskObject.upperCase(name11));
                     }
-                    catch(Exception empty)
+                    catch(MistakeOccuredException empty)
                     {
                     System.out.println(empty.getMessage());
                     }
@@ -287,15 +277,15 @@ public class Main {
                 case 12:
                     System.out.println("Enter a string");
                     String name12 =input.nextLine();
-               
-                try
-                {
+                
+                    try
+                    {
                     System.out.println(taskObject.lowerCase(name12));
-                 }
-                 catch(Exception empty)
-                 {
-                 System.out.println(empty.getMessage());
-                 }
+                    }
+                    catch(MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    }
                     break;
 
 
@@ -303,41 +293,39 @@ public class Main {
                     System.out.println("Enter a string");
 
                     String name13 =input.nextLine();
-                   try
-                   {
+                    try
+                    {
                     System.out.println(taskObject.toReverseAString(name13));
-                   }
-                   catch(Exception empty)
-                   {
-                   System.out.println(empty.getMessage());
-                   }
+                    }
+                    catch(MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    }
                     break;
 
 
                 case 14:
                     System.out.println("Enter a String");
-                    String name14 =input.nextLine();
-                   
-                  try
+                    String name14 =input.nextLine();                  
+                    try
                     {
                     System.out.println(taskObject.stringsInNextLine(name14));
                     }
-                  catch(Exception empty)
-                  {
-                  System.out.println(empty.getMessage());
-                  }  
-                    
+                    catch(MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    }  
                     break;
                     
                     
                 case 15:
                     System.out.println("Enter a String");
                     String name15 =input.nextLine();
-                   try
-                   {
+                    try
+                    {
                     System.out.println(taskObject.concatenateStrings(name15));
                     }
-                    catch(Exception empty)
+                    catch(MistakeOccuredException empty)
                     {
                     System.out.println(empty.getMessage());
                     }
@@ -347,7 +335,7 @@ public class Main {
                     System.out.println("Enter a sentence");
                     String name16 =input.nextLine();
                  
-                 try
+                    try
                     {
                     String splitSentence[]=taskObject.splitStrings(name16);
                     for(String k:splitSentence)
@@ -355,10 +343,10 @@ public class Main {
                     System.out.println(k);
                     }
                     }
-                  catch(Exception empty)
-                  {
-                  System.out.println(empty.getMessage());
-                  }  
+                    catch(MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    }  
                     
                     break;
                     
@@ -368,17 +356,17 @@ public class Main {
                     input.nextLine();
                     String name17[] = new String[number1];
                     System.out.println("Enter your string");
-                    int i;
-                    for (i = 0; i < number1; i++)
+                    
+                    for (int i = 0; i < number1; i++)
                     {
                         name17[i] = input.nextLine();
                         
                     }
-                     try
-                     {
+                    try
+                    {
                     System.out.println(taskObject.mergeWith(name17));
                     }
-                    catch(Exception empty)
+                    catch(MistakeOccuredException empty)
                     {
                     System.out.println(empty.getMessage());
                     }
@@ -389,14 +377,14 @@ public class Main {
                     String name18 =input.nextLine();
                     System.out.println("Enter a 2nd string");
                     String name_18 =input.nextLine();
-                  try
+                    try
                     {
                         System.out.println(taskObject.checkTwoStringsEqual(name18, name_18));
                     }
-                   catch(Exception empty)
-                   {
-                   System.out.println(empty.getMessage());
-                   } 
+                    catch(MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    } 
                     break;
                     
                 case 19:
@@ -404,14 +392,14 @@ public class Main {
                     String name19 =input.nextLine();
                     System.out.println("Enter a 2nd string");
                     String name_19 =input.nextLine();
-                       try
-                       {
-                        System.out.println(taskObject.checkTwoStringsEqualIgnoreCase(name19, name_19));
-                        }
-                        catch(Exception empty)
-                        {
-                        System.out.println(empty.getMessage());
-                        }
+                    try
+                    {
+                    System.out.println(taskObject.checkTwoStringsEqualIgnoreCase(name19, name_19));
+                    }
+                    catch(MistakeOccuredException empty)
+                    {
+                    System.out.println(empty.getMessage());
+                    }
                     break;
                     
                 case 20:
@@ -421,13 +409,13 @@ public class Main {
                     {
                     System.out.println(taskObject.toTrimAString(name20));
                     }
-                    catch(Exception empty)
+                    catch(MistakeOccuredException empty)
                     {
                     System.out.println(empty.getMessage());
                     }
                     break;
                 default:
-                    System.out.println("SORRY");
+                    System.out.println("Invalid Input...!");
             }
         }
     }

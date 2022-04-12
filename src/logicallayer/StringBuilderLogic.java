@@ -1,5 +1,7 @@
 package logicallayer;
 import task.Task1;
+import utility.*;
+import task4.*;
 
 
 
@@ -9,25 +11,13 @@ public class StringBuilderLogic
 Task1 objectForTask1=new Task1();
 
 
-public void nullCheckForBuilder(StringBuilder inputBuilder)throws Exception
-{
-if(inputBuilder==null) 
-{
-throw new Exception("Don't enter a null value");
-}
-}
-
-
-
 public void numberLengthCheck(StringBuilder inputBuilder,int number)
-                                     throws Exception
-
-
+                                     throws MistakeOccuredException
 {
-nullCheckForBuilder(inputBuilder);
+Utility.nullCheck(inputBuilder);
 if(number<0 || number>=inputBuilder.length())
 {
-throw new Exception("Invalid input...!");
+throw new MistakeOccuredException("Invalid input...!");
 }
 
 }
@@ -43,9 +33,9 @@ return emptyStringBuilder;
 
 
 
-public StringBuilder createBuilder(String inputString)throws Exception
+public StringBuilder createBuilder(String inputString)throws MistakeOccuredException
 {
-objectForTask1.nullEmptyCheck(inputString);
+Utility.stringCheck(inputString);
 StringBuilder newStringBuilder=new StringBuilder(inputString);
 return newStringBuilder;
 }
@@ -53,9 +43,9 @@ return newStringBuilder;
 
 
 
-public int stringBuilderLength(StringBuilder inputBuilder)throws Exception
+public int stringBuilderLength(StringBuilder inputBuilder)throws MistakeOccuredException
 {
-nullCheckForBuilder(inputBuilder);
+Utility.nullCheck(inputBuilder);
 return inputBuilder.length();
 }
 
@@ -63,11 +53,11 @@ return inputBuilder.length();
 
 
 public StringBuilder appendWith(StringBuilder inputBuilder,String inputString)
-  throws Exception
+  throws MistakeOccuredException
 
 {
-nullCheckForBuilder(inputBuilder);
-objectForTask1.nullEmptyCheck(inputString);
+Utility.nullCheck(inputBuilder);
+Utility.stringCheck(inputString);
 return inputBuilder.append(inputString);
 }
 
@@ -75,12 +65,12 @@ return inputBuilder.append(inputString);
 
 
 public StringBuilder separateString(StringBuilder actualBuilder,
-      String arrayString[],String symbol)throws Exception
+      String arrayString[],String symbol)throws MistakeOccuredException
       
 {
-nullCheckForBuilder(actualBuilder);
-objectForTask1.nullEmptyCheck(symbol);
-objectForTask1.arrayCheck(arrayString);
+Utility.nullCheck(actualBuilder);
+Utility.stringCheck(symbol);
+Utility.arrayCheck(arrayString);
 for(int i=0;i<arrayString.length;i++)
 {
 appendWith(actualBuilder,symbol);
@@ -94,13 +84,12 @@ return actualBuilder;
 
    
 public StringBuilder insertNewString(StringBuilder insertBuilder,
-       String actualString,String insertString,String symbol)throws Exception
+       String actualString,String insertString,String symbol)throws MistakeOccuredException
 {
-nullCheckForBuilder(insertBuilder);
-objectForTask1.nullEmptyCheck(actualString);
-objectForTask1.nullEmptyCheck(insertString);
-objectForTask1.nullEmptyCheck(symbol);
-
+Utility.nullCheck(insertBuilder);
+Utility.stringCheck(insertString);
+Utility.stringCheck(actualString);
+Utility.stringCheck(symbol);
 int firstStringLength=objectForTask1.getLength(actualString);
  insertBuilder.insert(firstStringLength+1,insertString+symbol);
  return insertBuilder;
@@ -110,10 +99,10 @@ int firstStringLength=objectForTask1.getLength(actualString);
 
 
 public StringBuilder deleteString(String inputString,
-         StringBuilder inputBuilder)throws Exception
+         StringBuilder inputBuilder)throws MistakeOccuredException
 {
-nullCheckForBuilder(inputBuilder);
-objectForTask1.nullEmptyCheck(inputString);
+Utility.nullCheck(inputBuilder);
+Utility.stringCheck(inputString);
 int length=objectForTask1.getLength(inputString);
 inputBuilder.delete(0,length+1);
 return inputBuilder;
@@ -123,10 +112,10 @@ return inputBuilder;
 
 
 public StringBuilder replaceString(StringBuilder inputBuilder,
-           char fromChange,char toChange)throws Exception
+           char fromChange,char toChange)throws MistakeOccuredException
            
 {
-nullCheckForBuilder(inputBuilder);
+Utility.nullCheck(inputBuilder);
 int length=stringBuilderLength(inputBuilder);
 for(int i=0;i<length;i++)
 {
@@ -143,9 +132,9 @@ return inputBuilder;
 
 
 public StringBuilder reverseString(StringBuilder reverseBuilder)
-                                            throws Exception
+                                            throws MistakeOccuredException
 {
-nullCheckForBuilder(reverseBuilder);
+Utility.nullCheck(reverseBuilder);
 reverseBuilder.reverse();
 return reverseBuilder;
 }
@@ -155,9 +144,9 @@ return reverseBuilder;
 
 public StringBuilder deleteCharacter(StringBuilder deleteBuilder,
                                     int startingPosition,int endingPosition)
-                                                  throws Exception
+                                                  throws MistakeOccuredException
 {
-nullCheckForBuilder(deleteBuilder);
+Utility.nullCheck(deleteBuilder);
 objectForTask1.positionCheck(startingPosition,endingPosition);
 deleteBuilder.delete(startingPosition,endingPosition);
 return deleteBuilder;
@@ -168,10 +157,10 @@ return deleteBuilder;
 
 public StringBuilder replaceCharacter(StringBuilder replaceBuilder,
                 int startingPosition,int endingPosition,String replaceString)
-                                                throws Exception
+                                                throws MistakeOccuredException
 {
-nullCheckForBuilder(replaceBuilder);
-objectForTask1.nullEmptyCheck(replaceString);
+Utility.nullCheck(replaceBuilder);
+Utility.stringCheck(replaceString);
 objectForTask1.positionCheck(startingPosition,endingPosition);
 numberLengthCheck(replaceBuilder,startingPosition);
 numberLengthCheck(replaceBuilder,endingPosition);
@@ -184,20 +173,20 @@ return replaceBuilder;
 
 
 public int toFindStartingSymbol(StringBuilder withSymbol,String symbol)
-                                                 throws Exception
+                                                 throws MistakeOccuredException
 {
-nullCheckForBuilder(withSymbol);
-objectForTask1.nullEmptyCheck(symbol);
+Utility.nullCheck(withSymbol);
+Utility.stringCheck(symbol);
 return withSymbol.indexOf(symbol);
 }
 
 
 
 
-public int toFindLastSymbol(StringBuilder withSymbol,String symbol)throws Exception
+public int toFindLastSymbol(StringBuilder withSymbol,String symbol)throws MistakeOccuredException
 {
-nullCheckForBuilder(withSymbol);
-objectForTask1.nullEmptyCheck(symbol);
+Utility.nullCheck(withSymbol);
+Utility.stringCheck(symbol);
 return withSymbol.lastIndexOf(symbol);
 }
 

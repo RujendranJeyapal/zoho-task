@@ -1,83 +1,60 @@
 package task;
-import java.util.Scanner;
-import java.util.InputMismatchException;
+import utility.*; 
+import task4.*;
+import java.util.*;
 
 public class Task1
 {
 
-     public void nullEmptyCheck(String name)throws Exception
-     {
-          if(name==null  || name.isEmpty())
-          {
-             throw new Exception("Don't enter a null (or) empty String");
-          }
-     }
-  
-    public void numberLengthCheck(int number,String name)throws Exception
+    public void numberLengthCheck(int number,String name)throws MistakeOccuredException
     {
-      if(number<0 || number>=getLength(name))
-           {        
-            throw new Exception("Invalid Input...!");       
-      }
+    if(number<0 || number>=getLength(name))
+    {        
+            throw new MistakeOccuredException("Invalid Input...!");       
+    }
     }
            
            
-     public void positionCheck(int startingPosition,int endingPosition)throws Exception
-     {
-     if(startingPosition>endingPosition)
-     {
-     throw new Exception("Please Enter the correct Position");
-     }
-         
-     }      
-           
-
-    
-
-
-
-
-
-     public int getLength(String arrayString)throws Exception
+    public void positionCheck(int startingPosition,int endingPosition)throws MistakeOccuredException
     {
-          nullEmptyCheck(arrayString);
+    if(startingPosition>endingPosition)
+    {
+     throw new MistakeOccuredException("Please Enter the correct Position");
+    }        
+    }      
 
-          int stringLength=arrayString.length();
+    public int getLength(String inputString)throws MistakeOccuredException
+    {
+          Utility.stringCheck(inputString);
+          int stringLength=inputString.length();
           return stringLength;
-
+ 
     }
 
 
 
-    public char[] stringToCharacter(String inputString)throws Exception
+    public char[] stringToCharacter(String inputString)throws MistakeOccuredException
     {
-    
-    
-         nullEmptyCheck(inputString);
+         Utility.stringCheck(inputString);
          char stringToChar[]=inputString.toCharArray();
          return stringToChar;
     }
 
 
 
-    public char letterOfPosition(String inputString,int position)throws Exception
+    public char letterOfPosition(String inputString,int position)throws MistakeOccuredException
     {
-           nullEmptyCheck(inputString);
-    
-           
-           
+           Utility.stringCheck(inputString);          
            numberLengthCheck(position,inputString);
            char letter=inputString.charAt(position);         
-            return letter;
+           return letter;
     }
 
 
 
 
-    public int occurrencesOfLetter(String inputString,char letter)throws Exception
+    public int occurrencesOfLetter(String inputString,char letter)throws MistakeOccuredException
     {
-    
-       
     
         int count=0;
         int b=getLength(inputString);
@@ -95,39 +72,35 @@ public class Task1
 
 
 
-    public int greatestPosition(String inputString,char letter)throws Exception
+    public int greatestPosition(String inputString,char letter)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
-    
+     
+        Utility.stringCheck(inputString);     
         int lastPositionOfLetter=inputString.lastIndexOf(letter);
         return lastPositionOfLetter;
     }
 
 
 
-    public String printLetters(String inputString,int startPosition,int endPosition)throws Exception
+    public String printLetters(String inputString,int startPosition,int endPosition)throws MistakeOccuredException
     {
     
-     nullEmptyCheck(inputString);
-    
+     Utility.stringCheck(inputString);
      numberLengthCheck(startPosition,inputString);
      numberLengthCheck(endPosition,inputString);
      positionCheck(startPosition,endPosition);
-    String a=inputString.substring(startPosition,endPosition); 
-    return a;
+     String a=inputString.substring(startPosition,endPosition); 
+     return a;
     }
 
 
-    public String printingLetters(String inputString,int startPosition,int endPosition)throws Exception
-    {
-     return printLetters(inputString,startPosition,endPosition);
-    }
+   
 
 
-    public String replaceWithAnotherLetter(String inputString,String replacingLetters,int firstPositionToReplace,int lastPositionToReplace)throws Exception
+    public String replaceWithAnotherLetter(String inputString,String replacingLetters,int firstPositionToReplace,int lastPositionToReplace)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
-        nullEmptyCheck(replacingLetters);
+        Utility.stringCheck(inputString);
+        Utility.stringCheck(replacingLetters);
         numberLengthCheck(firstPositionToReplace,inputString);
         numberLengthCheck(lastPositionToReplace,inputString); 
         positionCheck(firstPositionToReplace,lastPositionToReplace);
@@ -136,15 +109,14 @@ public class Task1
         return newReplaceString;
         
     
-}
+   }
 
 
 
-    public boolean startingCheck(String inputString,String testingLetters)throws Exception 
+   public boolean startingCheck(String inputString,String testingLetters)throws MistakeOccuredException 
    {   
-        nullEmptyCheck(inputString);
-        nullEmptyCheck(testingLetters);
-       
+        Utility.stringCheck(inputString);
+        Utility.stringCheck(testingLetters);     
         boolean startCheck=inputString.startsWith(testingLetters);
         return startCheck;       
    }
@@ -153,21 +125,19 @@ public class Task1
 
 
 
-    public boolean endingCheck(String inputString,String testingLetters)throws Exception
+    public boolean endingCheck(String inputString,String testingLetters)throws MistakeOccuredException
     {
-       
-        nullEmptyCheck(inputString);
-        nullEmptyCheck(testingLetters);       
+        Utility.stringCheck(inputString);
+        Utility.stringCheck(testingLetters);        
         boolean endCheck=inputString.endsWith(testingLetters);
         return endCheck;
     }
 
 
-    public String upperCase(String inputString)throws Exception
+    public String upperCase(String inputString)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
+        Utility.stringCheck(inputString);
         String upperCase=inputString.toUpperCase();
-
         return upperCase;
     }
 
@@ -175,18 +145,18 @@ public class Task1
 
 
 
-    public String lowerCase(String inputString)throws Exception
+    public String lowerCase(String inputString)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
+        Utility.stringCheck(inputString);
         String lowerCase=inputString.toLowerCase();
         return lowerCase;
     }
 
 
 
-    public String toReverseAString(String inputString)throws Exception
+    public String toReverseAString(String inputString)throws MistakeOccuredException
     { 
-        nullEmptyCheck(inputString);   
+        Utility.stringCheck(inputString);   
         String temp="";
         char reverse[]=stringToCharacter(inputString);
         int l=getLength(inputString);
@@ -199,10 +169,10 @@ public class Task1
 
 
 
-    public String stringsInNextLine(String inputString)throws Exception
+    public String stringsInNextLine(String inputString)throws MistakeOccuredException
 
     {
-        nullEmptyCheck(inputString);    
+        Utility.stringCheck(inputString);    
         return inputString;
 
     }
@@ -210,50 +180,38 @@ public class Task1
 
 
 
-    public String concatenateStrings(String inputString)throws Exception
+    public String concatenateStrings(String inputString)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
+        Utility.stringCheck(inputString);
         String replaceString=inputString.replace(" ","");
         return replaceString;
     }
 
 
 
-    public String[] splitStrings(String inputString)throws Exception
+    public String[] splitStrings(String inputString)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
+        Utility.stringCheck(inputString);
         String[] splitString=inputString.split(" ");
         return splitString;
     }
     
 
-    public String mergeWith(String[] inputStrings)throws Exception
-   {
+    public String mergeWith(String[] inputStrings)throws MistakeOccuredException
+    {
         
-        arrayCheck(inputStrings);
+        Utility.arrayCheck(inputStrings);
         String joinString=String.join("-",inputStrings);
         return joinString;
     
     }
-    public void arrayCheck(String[] inputStrings)throws Exception
-    {
-    for(String k:inputStrings)
-    {
-     nullEmptyCheck(k);
-    }
-    }
-    
     
     
 
-
-
-
-
-    public boolean checkTwoStringsEqual(String oneString,String anotherString)throws Exception
+    public boolean checkTwoStringsEqual(String oneString,String anotherString)throws MistakeOccuredException
     {
-        nullEmptyCheck(oneString);
-        nullEmptyCheck(anotherString);
+        Utility.stringCheck(oneString);
+        Utility.stringCheck(anotherString);
         boolean same=oneString.equals(anotherString);
         return same;
 
@@ -263,10 +221,10 @@ public class Task1
 
 
 
-    public boolean checkTwoStringsEqualIgnoreCase(String oneString,String anotherString)throws Exception
+    public boolean checkTwoStringsEqualIgnoreCase(String oneString,String anotherString)throws MistakeOccuredException
     {
-        nullEmptyCheck(oneString);
-        nullEmptyCheck(anotherString);
+        Utility.stringCheck(oneString);
+        Utility.stringCheck(anotherString);
         boolean same=oneString.equalsIgnoreCase(anotherString);
         return same;
 
@@ -276,9 +234,9 @@ public class Task1
 
 
 
-    public String toTrimAString(String inputString)throws Exception
+    public String toTrimAString(String inputString)throws MistakeOccuredException
     {
-        nullEmptyCheck(inputString);
+        Utility.stringCheck(inputString);
         String trimedSentence=inputString.trim();
         return trimedSentence;
     }
