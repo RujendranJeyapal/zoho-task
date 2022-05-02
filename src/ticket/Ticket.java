@@ -1,100 +1,50 @@
 package ticket;
-
-import java.util.Date;
+import passenger.*;
+import seat.*;
 
 public class Ticket 
 {
-       private String ticketId;
-       private int cusId;
-       private String vehicleType;
-       private String vehicleNumber;
-       private long parkingTime;
-       private int floor;
-       private int spotNo;
-       
-       
+      private String ticketId;
+      private PassengerInfo passInfo;
+      private Seat seat;
+      
 	public String getTicketId() 
 	{
 		return ticketId;
 	}
 	
-	public void setTicketId(String ticketId) 
+	public void setTicketId(String ticketId)
 	{
 		this.ticketId = ticketId;
 	}
 	
-	
-	
-	public int getCusId()
+	public PassengerInfo getPassInfo() 
 	{
-		return cusId;
+		return passInfo;
+	}
+	
+	public void setPassInfo(PassengerInfo passInfo)
+	{
+		this.passInfo = passInfo;
+	}
+	
+	public Seat getSeat() 
+	{
+		return seat;
+	}
+	
+	public void setSeat(Seat seat) 
+	{
+		this.seat = seat;
 	}
 
-	public void setCusId(int cusId) 
-	{
-		this.cusId = cusId;
-	}
-
-	public String getVehicleType() 
-	{
-		return vehicleType;
-	}
-	
-	public void setVehicleType(String vehicleType) 
-	{
-		this.vehicleType = vehicleType;
-	}
-	
-	public String getVehicleNumber() 
-	{
-		return vehicleNumber;
-	}
-	
-	public void setVehicleNumber(String vehicleNumber) 
-	{
-		this.vehicleNumber = vehicleNumber;
-	}
-	
-	public long getParkingTime() 
-	{
-		return parkingTime;
-	}
-	
-	public void setParkingTime(long parkingTime) 
-	{
-		this.parkingTime = parkingTime;
-	}
-	
-	public int getFloor() 
-	{
-		return floor;
-	}
-	
-	public void setFloor(int floor) 
-	{
-		this.floor = floor;
-	}
-	
-	public int getSpotNo()
-	{
-		return spotNo;
-	}
-	
-	public void setSpotNo(int spotNo) 
-	{
-		this.spotNo = spotNo;
-	}
-
-	
+	@Override
 	public String toString() 
 	{
-		return "Ticket ID=" + ticketId + "\n Customer Id=" + cusId + "\n Vehicle Type=" 
-	                                        + vehicleType + "\n Vehicle Number="
-				                            + vehicleNumber + "\n Parking Time=" + new Date(parkingTime) 
-				                            + "\n Floor=" + floor + "\n Spot No=" + spotNo;
+		return "Ticket [ticketId=" + ticketId + ", passInfo=" + passInfo + ", seat=" + seat + "]";
 	}
-       
-       
-       
-       
+      
+    
+	
+	  
 }
